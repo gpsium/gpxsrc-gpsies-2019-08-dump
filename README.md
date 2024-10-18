@@ -40,6 +40,21 @@ Each 52 folders (`aa`..`bz`, `ca`..`dz`, ...) are additionally packed into archi
 
 <hr>
 
+## Download
+
+```
+# Using Windows PowerShell:
+Import-Module BitsTransfer
+for ($i=65;$i-le90;$i+=2) { 
+    $fileid = "gpsies-2019-08-$([char]$i)$([char]($i + 1)).7z"
+    Write-Host -f Yellow $fileid
+    $j = Start-BitsTransfer -TransferType Download -Source "https://github.com/gpsium/gpxsrc-gpsies-2019-08-dump/releases/download/v1.0.0/$($fileid)" -Destination "T:\GPSIES\$($fileid)" -HttpMethod GET 
+    $j | Remove-BitsTransfer
+}
+```
+
+<hr>
+
 ### Extraction
 
 You will need [![7-Zip logo](https://www.7-zip.org/favicon.ico) 7-Zip](https://www.7-zip.org/) installed about 1 Gb of RAM to extract those archives.
